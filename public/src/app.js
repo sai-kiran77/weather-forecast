@@ -1,6 +1,6 @@
 const express = require("express")
 const app = express()
-
+const port = process.env.PORT || 3000
 const weather = require("./utils/geocode")
 
 const path = require("path")
@@ -36,7 +36,7 @@ app.get("/weather", (req, res) => {
                         res.send(
                             {
                                 weather_Report: weather_Report,
-                                address:location
+                                address: location
                             })
                     }
                 })
@@ -64,6 +64,6 @@ app.get("*", (req, res) => {
     })
 })
 
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log("server connected")
 })
